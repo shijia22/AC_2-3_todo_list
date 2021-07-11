@@ -59,6 +59,28 @@ app.get('/todos/:id', (req, res) => {
     .then((todo) => res.render('detail', { todo }))
     .catch((error) => console.log(error))
 })
+
+// edit
+app.get('/todos/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Todo.findById(id) // 從資料庫找 id
+    .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
+    .then((todo) => res.render('edit', { todo }))
+    .catch((error) => console.log(error))
+})
+
+app.post('/todos/:id/edit', (req, res) => {
+  const id = req.params.id
+  const name = req.body.name
+  return Todo.findById(id) // 查詢資料
+    .then((todo) => { // 如果成功就存資料
+      todo.name = name
+      return todo.save()
+    })
+    .then(() => res.redirect(`/todos/${id}`)) // 並導回首頁
+    .catch((error) => console.log(error))
+})
+
 // 設定 port 3000
 app.listen(3000, () => {
   console.log('App is running on http://localhost:3000')
