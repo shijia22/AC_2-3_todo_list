@@ -5,6 +5,8 @@
 <ul>
   {{#each todos}}
     <li>
+       {{!-- checkbox 只能檢視、不能編輯，所以加入了 disabled 屬性 --}}
+      <input type="checkbox" name="isDone" {{#if this.isDone }} checked {{/if}} disabled>
       {{this.name}}
       <a href='./todos/{{this._id}}'>detail</a>
       <a href='./todos/{{this._id}}/edit'>edit</a>

@@ -6,6 +6,11 @@ const todoSchema = new Schema({
     type: String, // 資料型別是字串
     required: true, // 這是個必填欄位
   },
+  isDone: {
+    // 使用 is 暗示變數為 布林值
+    type: String,
+    default: false, // 預設完成狀態為 false
+  },
 })
 
 module.exports = mongoose.model('Todo', todoSchema)

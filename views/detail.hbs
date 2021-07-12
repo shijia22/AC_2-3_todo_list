@@ -1,5 +1,6 @@
 {{! app.js todo }}
 
+<input type="checkbox" name="isDone" {{#if todo.isDone }} checked {{/if}} disabled>
 <p>{{todo.name}}</p>
 <a href="/todos/{{ todo._id }}/edit">edit</a> {{!-- 有 . 跟沒有 . 都一樣 --}}
 <form action="/todos/{{ todo._id }}/delete" method="POST" style="display: inline;">
