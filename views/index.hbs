@@ -12,7 +12,7 @@
       <a href='./todos/{{this._id}}/edit'>edit</a>
       <form  
       {{!-- a 只能發 get 請求，所以這裡改成 form --}}
-        action='./todos/{{this._id}}/delete'
+        action='./todos/{{this._id}}?_method=DELETE'
         method='POST'
         style=' display : inline ; '
       >
